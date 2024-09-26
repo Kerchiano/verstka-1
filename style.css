@@ -699,7 +699,6 @@ body {
 }
 
 .logos-content {
-  width: 660px;
   margin: 0 auto;
   height: 157px;
   margin-top: 52px;
@@ -836,6 +835,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 68px;
 }
 
 .irs-grid-text {
@@ -843,6 +843,7 @@ body {
 }
 
 .last-logo svg {
+  box-shadow: none;
   margin-left: 90px;
 }
 
@@ -1469,6 +1470,7 @@ body {
   .last-logo {
     display: flex;
     justify-content: center;
+    padding-bottom: 0;
   }
 
   .last-logo svg {
