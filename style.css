@@ -204,7 +204,7 @@ body {
   height: 45px;
   border-radius: 4px;
   background: #d81e05;
-  margin: 0 27px 52px 27px;
+  margin: 0 27px 42px 27px;
   font-family: "Open Sans";
   font-size: 16px;
   font-weight: 400;
@@ -1483,4 +1483,32 @@ body {
   .logos-footer-content {
     display: none;
   }
+}
+
+input {
+  display: block;
+}
+
+label.error {
+  color: white;
+  font-size: 16px;
+  margin: 10px 0 5px 30px;
+}
+
+label.error:last-child {
+  margin-left: 0;
+  margin-top: 10px;
+  display: block;
+}
+
+#registrationWhiteForm label.error {
+  color: red;
+}
+
+#registrationWhiteForm {
+  height: auto;
+}
+
+#registrationForm {
+  height: auto;
 }

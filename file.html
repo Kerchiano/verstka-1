@@ -41,6 +41,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
   </head>
   <body>
     <header>
@@ -132,11 +133,11 @@
               />
             </defs>
           </svg>
-          <form>
-            <input type="text" placeholder="IL SUO NOME" />
-            <input type="text" placeholder="IL SUO COG" />
-            <input type="email" placeholder="EMAIL" />
-            <input id="phone" type="tel" />
+          <form id="registrationForm">
+            <input type="text" name="name" placeholder="IL SUO NOME" />
+            <input type="text" name="surname" placeholder="IL SUO COG" />
+            <input type="email" name="email" placeholder="EMAIL" />
+            <input id="phone" name="phone" type="tel" />
             <button type="submit">REGISTRATI</button>
           </form>
         </div>
@@ -156,11 +157,11 @@
           />
         </svg>
         <div class="gray-square"></div>
-        <form class="white-form">
-          <input type="text" placeholder="IL SUO NOME" />
-          <input type="text" placeholder="IL SUO COG" />
-          <input type="email" placeholder="EMAIL" />
-          <input id="phone" type="tel" placeholder="+39" />
+        <form id="registrationWhiteForm" class="white-form">
+          <input type="text" name="name" placeholder="IL SUO NOME" />
+          <input type="text" name="surname" placeholder="IL SUO COG" />
+          <input type="email" name="email" placeholder="EMAIL" />
+          <input name="phone" type="tel" placeholder="+39" />
           <button type="submit">REGISTRATI</button>
         </form>
         <div class="content">
@@ -936,6 +937,126 @@
             navList.style.display = "flex";
           }
         });
+
+      $(document).ready(function () {
+        $.validator.addMethod(
+          "phoneFormat",
+          function (value, element) {
+            return this.optional(element) || /^\+\d{12}$/.test(value);
+          },
+          "Введите корректный номер телефона в формате +XXXXXXXXXXXX"
+        );
+        $("#registrationForm").validate({
+          rules: {
+            name: {
+              required: true,
+              minlength: 2,
+            },
+            surname: {
+              required: true,
+              minlength: 2,
+            },
+            email: {
+              required: true,
+              email: true,
+            },
+            phone: {
+              required: true,
+              phoneFormat: true,
+            },
+          },
+          messages: {
+            name: {
+              required: "Пожалуйста, введите ваше имя",
+              minlength: "Имя должно содержать минимум 2 символа",
+            },
+            surname: {
+              required: "Пожалуйста, введите вашу фамилию",
+              minlength: "Фамилия должна содержать минимум 2 символа",
+            },
+            email: {
+              required: "Пожалуйста, введите ваш email",
+              email: "Введите корректный email",
+            },
+            phone: {
+              required: "Пожалуйста, введите ваш номер телефона",
+              phoneUS: "Введите корректный номер телефона",
+            },
+          },
+
+          highlight: function (element) {
+            $(".iti__selected-flag").css("height", "40px");
+            $(".iti").css("margin-bottom", "20px");
+            $("#registrationForm button").css("margin-bottom", "22px");
+          },
+          submitHandler: function (form) {
+            form.submit();
+          },
+        });
+      });
+
+      $(document).ready(function () {
+        $.validator.addMethod(
+          "phoneFormat",
+          function (value, element) {
+            return this.optional(element) || /^\+\d{12}$/.test(value);
+          },
+          "Введите корректный номер телефона в формате +XXXXXXXXXXXX"
+        );
+
+        $("#registrationWhiteForm").validate({
+          rules: {
+            name: {
+              required: true,
+              minlength: 2,
+            },
+            surname: {
+              required: true,
+              minlength: 2,
+            },
+            email: {
+              required: true,
+              email: true,
+            },
+            phone: {
+              required: true,
+              phoneFormat: true,
+            },
+          },
+          messages: {
+            name: {
+              required: "Пожалуйста, введите ваше имя",
+              minlength: "Имя должно содержать минимум 2 символа",
+            },
+            surname: {
+              required: "Пожалуйста, введите вашу фамилию",
+              minlength: "Фамилия должна содержать минимум 2 символа",
+            },
+            email: {
+              required: "Пожалуйста, введите ваш email",
+              email: "Введите корректный email",
+            },
+            phone: {
+              required: "Пожалуйста, введите ваш номер телефона",
+              phoneUS: "Введите корректный номер телефона",
+            },
+          },
+
+          highlight: function (element) {
+            $(element).css("margin-bottom", "0");
+            $(element).addClass("input-error");
+            $("#registrationWhiteForm button").css("margin-top", "32px");
+          },
+
+          unhighlight: function (element) {
+            $("#registrationWhiteForm button").css("margin-bottom", "40px");
+          },
+
+          submitHandler: function (form) {
+            form.submit();
+          },
+        });
+      });
     </script>
   </body>
 </html>
