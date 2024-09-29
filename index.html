@@ -926,17 +926,26 @@
         updateTotalPrice();
       });
 
-      document
-        .getElementById("burger-menu")
-        .addEventListener("click", function () {
-          const navList = document.getElementById("nav-list");
+      const burgerMenu = document.getElementById("burger-menu");
+      const navList = document.getElementById("nav-list");
 
-          if (navList.style.display === "flex") {
-            navList.style.display = "none";
-          } else {
-            navList.style.display = "flex";
-          }
-        });
+      burgerMenu.addEventListener("click", function (event) {
+        event.stopPropagation();
+        if (navList.style.display === "flex") {
+          navList.style.display = "none";
+        } else {
+          navList.style.display = "flex";
+        }
+      });
+
+      document.addEventListener("click", function (event) {
+        const isClickInsideNav =
+          navList.contains(event.target) || burgerMenu.contains(event.target);
+
+        if (!isClickInsideNav && navList.style.display === "flex") {
+          navList.style.display = "none";
+        }
+      });
 
       $(document).ready(function () {
         $.validator.addMethod(
@@ -944,7 +953,7 @@
           function (value, element) {
             return this.optional(element) || /^\+\d{12}$/.test(value);
           },
-          "Введите корректный номер телефона в формате +XXXXXXXXXXXX"
+          "Inserisci un numero di telefono valido nel formato +XXXXXXXXXXXX"
         );
         $("#registrationForm").validate({
           rules: {
@@ -967,20 +976,20 @@
           },
           messages: {
             name: {
-              required: "Пожалуйста, введите ваше имя",
-              minlength: "Имя должно содержать минимум 2 символа",
+              required: "Per favore inserisci il tuo nome",
+              minlength: "Il nome deve contenere almeno 2 caratteri",
             },
             surname: {
-              required: "Пожалуйста, введите вашу фамилию",
-              minlength: "Фамилия должна содержать минимум 2 символа",
+              required: "Per favore inserisci il tuo cognome",
+              minlength: "Il cognome deve contenere almeno 2 caratteri",
             },
             email: {
-              required: "Пожалуйста, введите ваш email",
-              email: "Введите корректный email",
+              required: "Per favore inserisci la tua email",
+              email: "Inserisci un'e-mail corretta",
             },
             phone: {
-              required: "Пожалуйста, введите ваш номер телефона",
-              phoneUS: "Введите корректный номер телефона",
+              required: "Inserisci il tuo numero di telefono",
+              phoneUS: "Inserisci un numero di telefono corretto",
             },
           },
 
@@ -1001,7 +1010,7 @@
           function (value, element) {
             return this.optional(element) || /^\+\d{12}$/.test(value);
           },
-          "Введите корректный номер телефона в формате +XXXXXXXXXXXX"
+          "Inserisci un numero di telefono valido nel formato +XXXXXXXXXXXX"
         );
 
         $("#registrationWhiteForm").validate({
@@ -1025,20 +1034,20 @@
           },
           messages: {
             name: {
-              required: "Пожалуйста, введите ваше имя",
-              minlength: "Имя должно содержать минимум 2 символа",
+              required: "Per favore inserisci il tuo nome",
+              minlength: "Il nome deve contenere almeno 2 caratteri",
             },
             surname: {
-              required: "Пожалуйста, введите вашу фамилию",
-              minlength: "Фамилия должна содержать минимум 2 символа",
+              required: "Per favore inserisci il tuo cognome",
+              minlength: "Il cognome deve contenere almeno 2 caratteri",
             },
             email: {
-              required: "Пожалуйста, введите ваш email",
-              email: "Введите корректный email",
+              required: "Per favore inserisci la tua email",
+              email: "Inserisci un'e-mail corretta",
             },
             phone: {
-              required: "Пожалуйста, введите ваш номер телефона",
-              phoneUS: "Введите корректный номер телефона",
+              required: "Inserisci il tuo numero di telefono",
+              phoneUS: "Inserisci un numero di telefono corretto",
             },
           },
 

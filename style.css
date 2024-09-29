@@ -90,6 +90,7 @@ h6 {
 body {
   margin: 0 auto;
   max-width: 1200px;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -1482,6 +1483,10 @@ body {
 
   .logos-footer-content {
     display: none;
+  }
+
+  .card-2 button {
+    width: 360px;
   }
 }
 
