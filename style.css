@@ -91,7 +91,6 @@ body {
   margin: 0 auto;
   max-width: 1200px;
   overflow-x: hidden;
-  min-width: 580px;
 }
 
 .logo {
@@ -841,7 +840,7 @@ body {
 }
 
 .irs-grid-text {
-  font-size: 12px!important;
+  font-size: 12px !important;
 }
 
 .last-logo svg {
@@ -1517,4 +1516,8 @@ label.error:last-child {
 
 #registrationForm {
   height: auto;
+}
+
+.swiper-slide-active {
+  margin-right: 0 !important;
 }
