@@ -506,6 +506,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 26px;
 }
 
 .calculator h2 {
@@ -1242,6 +1243,7 @@ body {
 
   .calculator-wrapper {
     flex-direction: column;
+    margin-left: 0;
   }
 
   .calculator-body {
@@ -1516,8 +1518,4 @@ label.error:last-child {
 
 #registrationForm {
   height: auto;
-}
-
-.swiper-slide-active {
-  margin-right: 0 !important;
 }
