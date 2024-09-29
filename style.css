@@ -91,10 +91,7 @@ body {
   margin: 0 auto;
   max-width: 1200px;
   overflow-x: hidden;
-}
-
-html {
-  overflow-x: hidden;
+  min-width: 480px;
 }
 
 .logo {
@@ -1493,6 +1490,10 @@ html {
 
   .card-2 button {
     width: 360px;
+  }
+
+  .card-1, .card-2, .card-3 {
+    padding: 0;
   }
 }
 
